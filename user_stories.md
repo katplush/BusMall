@@ -1,4 +1,4 @@
-<center> <h1>**BusMall User Stories**</h1></center>
+#BusMall User Stories
 
 1) As a marketing research team member, I want to do a market analysis to gain insight on customer interest in proposed products, to ensure we only feature items most likely to sell.
 
