@@ -27,46 +27,73 @@ function generateItems() {
   new Item('pet-sweep', 'img/pet-sweep.jpg', 0, 0);
   new Item('tauntaun', 'img/tauntaun.jpg', 0, 0);
   new Item('unicorn', 'img/unicorn.jpg', 0, 0);
-  new Item('usb', 'img/usb.jpg', 0, 0);
+  new Item('usb', 'img/usb.gif', 0, 0);
   new Item('water-can', 'img/water-can.jpg', 0, 0);
   new Item('wine-glass', 'img/wine-glass.jpg', 0, 0);
 }
 generateItems();
 
-//randomly display one of the pictures
-// function randomItem() {
-//   var randomIndex = Math.floor(Math.random() * Item.allItems.length);
-//   imgEl1.src = Item.allItems[randomIndex].filepath;
-// }
-// randomItem();
-
 //listener, something to be clicked...events!!!
 var imgEl1 = document.getElementById('imageOne');
 var imgEl2 = document.getElementById('imageTwo');
 var imgEl3 = document.getElementById('imageThree');
+var chooseOne = [imgEl1, imgEl2, imgEl3];
+var currIndices = []; 
+var prevIndices = [];
 
-function displayImage1() {
-  var randomIndex = Math.floor(Math.random() * allItems.length);
-  imgEl1.src = allItems[randomIndex].filepath;
+function computeNewIndices(usedImages) {
+  var newSet=new Array(chooseOne.length);
+  var newCt=0;
+  while(newCt<chooseOne.length) {
+    var iRand=Math.floor(Math.random() * allItems.length);
+    if(usedImages.includes(iRand) || newSet.includes(iRand)) {
+      continue;
+    }
+    newSet[newCt++]=iRand;
+  }
+  return newSet;
 }
-displayImage1();
 
-function displayImage2() {
-  var randomIndex = Math.floor(Math.random() * allItems.length);
-  imgEl2.src = allItems[randomIndex].filepath;
+//randomly display one of the pictures
+function displayImages() {
+
+  currIndices=computeNewIndices(prevIndices);
+  
+  for(var i = 0; i < currIndices.length; i++) {
+    chooseOne[i].src = allItems[currIndices[i]].filepath;
+  }
+  prevIndices=currIndices;
 }
-displayImage2();
+displayImages();
 
-function displayImage3() {
-  var randomIndex = Math.floor(Math.random() * allItems.length);
-  imgEl3.src = allItems[randomIndex].filepath;
-}
-displayImage3();
+imgEl1.addEventListener('click', displayImages);
+imgEl2.addEventListener('click', displayImages);
+imgEl3.addEventListener('click', displayImages);
 
-imgEl1.addEventListener('click', displayImage1);
-imgEl2.addEventListener('click', displayImage2);
-imgEl3.addEventListener('click', displayImage3);
+// document.getElementById ("").addEventListener ("click", updateCounter, false);
+// var count = 0;
+// function updateCounter() {
+//   count++;  
+//   document.getElementById("counted").innerHTML = "This has been clicked " + count + " times.";
+// }
 
+// var arrayWithElements = new Array();
+
+// document.onclick = clickListener;
+
+// function clickListener(e) {
+//   var clickedElement;
+//   if(e === null) {
+//     clickedElement = event.srcElement;
+//   } else {
+//     clickedElement = e.target;
+//   }
+//   arrayWithElements.push(clickedElement);
+//   alert(arrayWithElements);
+// }
+// clickListener();
+
+// chooseOne[].addEventListener('click', displayImage1, displayImage2, displayImage3);
 
 
 // var usedImages = {};
