@@ -38,7 +38,7 @@ var imgEl1 = document.getElementById('imageOne');
 var imgEl2 = document.getElementById('imageTwo');
 var imgEl3 = document.getElementById('imageThree');
 var chooseOne = [imgEl1, imgEl2, imgEl3];
-var currIndices = []; 
+var currIndices = [];
 var prevIndices = [];
 
 function computeNewIndices(usedImages) {
@@ -55,62 +55,27 @@ function computeNewIndices(usedImages) {
 }
 
 //randomly display one of the pictures
-function displayImages() {
+function displayImages(clickEvent = null) {
 
-  currIndices=computeNewIndices(prevIndices);
-  
+  // if we have event, update count.
+  if (clickEvent) {
+    var iString = clickEvent.target.getAttribute('index');
+    var iNum = parseInt(iString);
+    if (!isNaN(iNum)) {
+      allItems[iNum].numOfTimesClicked++;
+    } 
+  }
+  currIndices = computeNewIndices(prevIndices);
+
   for(var i = 0; i < currIndices.length; i++) {
     chooseOne[i].src = allItems[currIndices[i]].filepath;
+    chooseOne[i].setAttribute('index', currIndices[i]);
+    allItems[currIndices[i]].numOfTimesShown++;
   }
-  prevIndices=currIndices;
+  prevIndices = currIndices;
 }
 displayImages();
 
 imgEl1.addEventListener('click', displayImages);
 imgEl2.addEventListener('click', displayImages);
 imgEl3.addEventListener('click', displayImages);
-
-// document.getElementById ("").addEventListener ("click", updateCounter, false);
-// var count = 0;
-// function updateCounter() {
-//   count++;  
-//   document.getElementById("counted").innerHTML = "This has been clicked " + count + " times.";
-// }
-
-// var arrayWithElements = new Array();
-
-// document.onclick = clickListener;
-
-// function clickListener(e) {
-//   var clickedElement;
-//   if(e === null) {
-//     clickedElement = event.srcElement;
-//   } else {
-//     clickedElement = e.target;
-//   }
-//   arrayWithElements.push(clickedElement);
-//   alert(arrayWithElements);
-// }
-// clickListener();
-
-// chooseOne[].addEventListener('click', displayImage1, displayImage2, displayImage3);
-
-
-// var usedImages = {};
-// var usedImagesCount = 0;
-
-// function displayImage(){
-
-//     var num = Math.floor(Math.random() * (imagesArray.length));
-//     if (!usedImages[num]){
-//         document.canvas.src = imagesArray[num];
-//         usedImages[num] = true;
-//         usedImagesCount++;
-//         if (usedImagesCount === imagesArray.length){
-//             usedImagesCount = 0;
-//             usedImages = {};
-//         }
-//     } else {
-//         displayImage();
-//     }
-// }
