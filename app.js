@@ -63,7 +63,7 @@ function displayImages(clickEvent = null) {
     var iNum = parseInt(iString);
     if (!isNaN(iNum)) {
       allItems[iNum].numOfTimesClicked++;
-    } 
+    }
   }
   currIndices = computeNewIndices(prevIndices);
 
