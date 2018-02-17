@@ -68,16 +68,17 @@ function displayImages(clickEvent = null) {
     }
   }
   currIndices = computeNewIndices(prevIndices);
+  console.log(currIndices);
 
   function showTally() {
     for(var i = 0; i < allItems.length; i++) {
       var liEl = document.createElement('li');
-      liEl.textContent = allItems[i].name + ' has ' + allItems[i].numOfTimesClicked + ' votes in ' + allItems[i].numOfTimesShown + ' views.';
+      liEl.textContent = allItems[i].name + ' has ' + allItems[i].numOfTimesClicked + ' votes out of ' + allItems[i].numOfTimesShown + ' views';
       Item.tally.appendChild(liEl);
       console.log(showTally);
     }
   }
-
+  console.log(Item.totalClicks, 'total clicks');
   if ( Item.totalClicks++ > 24) {
     imgEl1.removeEventListener('click', displayImages);
     imgEl2.removeEventListener('click', displayImages);
@@ -97,7 +98,3 @@ displayImages();
 imgEl1.addEventListener('click', displayImages);
 imgEl2.addEventListener('click', displayImages);
 imgEl3.addEventListener('click', displayImages);
-
-
-
-
