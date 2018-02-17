@@ -1,0 +1,10 @@
+h1, ul {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+img {
+  display: inline-block; 
+  height: 200px;
+  margin: 10px;
+}
+
