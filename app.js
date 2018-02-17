@@ -6,8 +6,8 @@ var allItems=[];
 function Item(name, filepath, numOfTimesClicked, numOfTimesShown) {
   this.name = name;
   this.filepath = filepath;
-  this.numOfTimesClicked=numOfTimesClicked;
-  this.numOfTimesShown=numOfTimesShown;
+  this.numOfTimesClicked = numOfTimesClicked;
+  this.numOfTimesShown = numOfTimesShown;
   allItems.push(this);
 }
 
@@ -40,6 +40,8 @@ var imgEl3 = document.getElementById('imageThree');
 var chooseOne = [imgEl1, imgEl2, imgEl3];
 var currIndices = [];
 var prevIndices = [];
+Item.totalClicks = 0;
+Item.tally = document.getElementById('tally');
 
 function computeNewIndices(usedImages) {
   var newSet=new Array(chooseOne.length);
@@ -67,6 +69,22 @@ function displayImages(clickEvent = null) {
   }
   currIndices = computeNewIndices(prevIndices);
 
+  function showTally() {
+    for(var i = 0; i < allItems.length; i++) {
+      var liEl = document.createElement('li');
+      liEl.textContent = allItems[i].name + ' has ' + allItems[i].numOfTimesClicked + ' votes in ' + allItems[i].numOfTimesShown + ' views.';
+      Item.tally.appendChild(liEl);
+      console.log(showTally);
+    }
+  }
+
+  if ( Item.totalClicks++ > 24) {
+    imgEl1.removeEventListener('click', displayImages);
+    imgEl2.removeEventListener('click', displayImages);
+    imgEl3.removeEventListener('click', displayImages);
+    showTally();
+  }
+
   for(var i = 0; i < currIndices.length; i++) {
     chooseOne[i].src = allItems[currIndices[i]].filepath;
     chooseOne[i].setAttribute('index', currIndices[i]);
@@ -79,3 +97,7 @@ displayImages();
 imgEl1.addEventListener('click', displayImages);
 imgEl2.addEventListener('click', displayImages);
 imgEl3.addEventListener('click', displayImages);
+
+
+
+
