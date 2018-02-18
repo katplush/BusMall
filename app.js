@@ -3,33 +3,34 @@
 var allItems=[];
 
 //make my constructor function
-function Item(name, filepath, numOfTimesClicked, numOfTimesShown) {
+function Item(name, filepath, numOfTimesClicked, numOfTimesShown,labelColor) {
   this.name = name;
   this.filepath = filepath;
   this.numOfTimesClicked = numOfTimesClicked;
   this.numOfTimesShown = numOfTimesShown;
+  this.labelColor = labelColor;
   allItems.push(this);
 }
 
 //use my constructor function to create new Item instances
 function generateItems() {
-  new Item('bag', 'img/bag.jpg', 0, 0);
-  new Item('banana', 'img/banana.jpg', 0, 0);
-  new Item('bathroom', 'img/bathroom.jpg', 0, 0);
-  new Item('boots', 'img/boots.jpg', 0, 0);
-  new Item('breakfast', 'img/breakfast.jpg', 0, 0);
-  new Item('bubblegum', 'img/bubblegum.jpg', 0, 0);
-  new Item('chair', 'img/chair.jpg', 0, 0);
-  new Item('cthulhu', 'img/cthulhu.jpg', 0, 0);
-  new Item('dog-duck', 'img/dog-duck.jpg', 0, 0);
-  new Item('dragon', 'img/dragon.jpg', 0, 0);
-  new Item('pen', 'img/pen.jpg', 0, 0);
-  new Item('pet-sweep', 'img/pet-sweep.jpg', 0, 0);
-  new Item('tauntaun', 'img/tauntaun.jpg', 0, 0);
-  new Item('unicorn', 'img/unicorn.jpg', 0, 0);
-  new Item('usb', 'img/usb.gif', 0, 0);
-  new Item('water-can', 'img/water-can.jpg', 0, 0);
-  new Item('wine-glass', 'img/wine-glass.jpg', 0, 0);
+  new Item('Bag', 'img/bag.jpg', 0, 0, '#ffcb0c');
+  new Item('Banana', 'img/banana.jpg', 0, 0, '#006400');
+  new Item('Bathroom', 'img/bathroom.jpg', 0, 0, '#272759');
+  new Item('Boots', 'img/boots.jpg', 0, 0, '#FF1493');
+  new Item('Breakfast', 'img/breakfast.jpg', 0, 0, '#ffcb0c');
+  new Item('Bubblegum', 'img/bubblegum.jpg', 0, 0, '#006400');
+  new Item('Chair', 'img/chair.jpg', 0, 0, '#272759');
+  new Item('Cthulhu', 'img/cthulhu.jpg', 0, 0, '#FF1493');
+  new Item('Dog-duck', 'img/dog-duck.jpg', 0, 0, '#ffcb0c');
+  new Item('Dragon', 'img/dragon.jpg', 0, 0, '#2f6a2f');
+  new Item('Pen', 'img/pen.jpg', 0, 0, '#FF1493');
+  new Item('Pet-sweep', 'img/pet-sweep.jpg', 0, 0, '#ffcb0c');
+  new Item('Tauntaun', 'img/tauntaun.jpg', 0, 0, '#FF1493');
+  new Item('Unicorn', 'img/unicorn.jpg', 0, 0, '#2f6a2f');
+  new Item('Usb', 'img/usb.gif', 0, 0, '#272759');
+  new Item('Water-can', 'img/water-can.jpg', 0, 0, '#ffcb0c');
+  new Item('Wine-glass', 'img/wine-glass.jpg', 0, 0, '#FF1493');
 }
 generateItems();
 
@@ -74,8 +75,9 @@ function displayImages(clickEvent = null) {
     for(var i = 0; i < allItems.length; i++) {
       var liEl = document.createElement('li');
       liEl.textContent = allItems[i].name + ' has ' + allItems[i].numOfTimesClicked + ' votes out of ' + allItems[i].numOfTimesShown + ' views';
+      console.log(allItems[i].numOfTimesShown + ' shown');
+      console.log(allItems[i].numOfTimesClicked + ' number of times clicked');
       Item.tally.appendChild(liEl);
-      console.log(showTally);
     }
   }
   console.log(Item.totalClicks, 'total clicks');
@@ -84,6 +86,7 @@ function displayImages(clickEvent = null) {
     imgEl2.removeEventListener('click', displayImages);
     imgEl3.removeEventListener('click', displayImages);
     showTally();
+    generateChart();
   }
 
   for(var i = 0; i < currIndices.length; i++) {
@@ -98,3 +101,39 @@ displayImages();
 imgEl1.addEventListener('click', displayImages);
 imgEl2.addEventListener('click', displayImages);
 imgEl3.addEventListener('click', displayImages);
+
+function generateChart() {
+  var chartNames = [];
+  var chartVotes = [];
+  var labelColors = [];
+  for(var j = 0; j < allItems.length; j++) {
+    chartNames[j] = allItems[j].name;
+    chartVotes[j] = allItems[j].numOfTimesClicked;
+    labelColors[j] = allItems[j].labelColor;
+  }
+
+  var ctx = document.getElementById('chart').getContext('2d');
+
+  var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: chartNames,
+      datasets: [{
+        label: '# of Votes',
+        data: chartVotes,
+        backgroundColor: labelColors
+      }]
+    },
+    options: {
+      scales: {
+        yAxes: [{
+          ticks:  {
+            beginAtZero: true,
+            stepSize: 1,
+            max: 8,
+          }
+        }]
+      }
+    }
+  });
+}
