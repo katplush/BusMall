@@ -139,3 +139,10 @@ function generateChart() {
     }
   });
 }
+
+var clearLS = document.getElementById('clearStorage');
+
+clearLS.addEventListener('click', function() {
+  console.log('click it!');
+  localStorage.clear();
+});

@@ -15,6 +15,11 @@ ul {
   margin: auto;
 }
 
+button {
+  margin: 5px;
+  background-color: #ffcb0c;
+}
+
 #image_container {
   width: 50%;
   margin-left: 20%;
