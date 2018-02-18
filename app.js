@@ -103,6 +103,8 @@ imgEl2.addEventListener('click', displayImages);
 imgEl3.addEventListener('click', displayImages);
 
 function generateChart() {
+  var strItems = JSON.stringify(allItems);
+  localStorage.setItem('items', strItems);
   var chartNames = [];
   var chartVotes = [];
   var labelColors = [];
