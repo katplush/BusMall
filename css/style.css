@@ -1,10 +1,18 @@
-h1, ul {
+h1 {
   font-family: Arial, Helvetica, sans-serif;
   text-align: center;
+  background-color: #ffcb0c;
+  margin: auto;
 }
 
 ul {
   list-style-type: none;
+  background-color: #272759;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1em;
+  color: white;
+  margin: auto;
 }
 
 #image_container {

@@ -14,23 +14,23 @@ function Item(name, filepath, numOfTimesClicked, numOfTimesShown,labelColor) {
 
 //use my constructor function to create new Item instances
 function generateItems() {
-  new Item('bag', 'img/bag.jpg', 0, 0, '#ffcb0c');
-  new Item('banana', 'img/banana.jpg', 0, 0, '#006400');
-  new Item('bathroom', 'img/bathroom.jpg', 0, 0, '#272759');
-  new Item('boots', 'img/boots.jpg', 0, 0, '#FF1493');
-  new Item('breakfast', 'img/breakfast.jpg', 0, 0, '#ffcb0c');
-  new Item('bubblegum', 'img/bubblegum.jpg', 0, 0, '#006400');
-  new Item('chair', 'img/chair.jpg', 0, 0, '#272759');
-  new Item('cthulhu', 'img/cthulhu.jpg', 0, 0, '#FF1493');
-  new Item('dog-duck', 'img/dog-duck.jpg', 0, 0, '#ffcb0c');
-  new Item('dragon', 'img/dragon.jpg', 0, 0, '#2f6a2f');
-  new Item('pen', 'img/pen.jpg', 0, 0, '#FF1493');
-  new Item('pet-sweep', 'img/pet-sweep.jpg', 0, 0, '#ffcb0c');
-  new Item('tauntaun', 'img/tauntaun.jpg', 0, 0, '#FF1493');
-  new Item('unicorn', 'img/unicorn.jpg', 0, 0, '#2f6a2f');
-  new Item('usb', 'img/usb.gif', 0, 0, '#272759');
-  new Item('water-can', 'img/water-can.jpg', 0, 0, '#ffcb0c');
-  new Item('wine-glass', 'img/wine-glass.jpg', 0, 0, '#FF1493');
+  new Item('Bag', 'img/bag.jpg', 0, 0, '#ffcb0c');
+  new Item('Banana', 'img/banana.jpg', 0, 0, '#006400');
+  new Item('Bathroom', 'img/bathroom.jpg', 0, 0, '#272759');
+  new Item('Boots', 'img/boots.jpg', 0, 0, '#FF1493');
+  new Item('Breakfast', 'img/breakfast.jpg', 0, 0, '#ffcb0c');
+  new Item('Bubblegum', 'img/bubblegum.jpg', 0, 0, '#006400');
+  new Item('Chair', 'img/chair.jpg', 0, 0, '#272759');
+  new Item('Cthulhu', 'img/cthulhu.jpg', 0, 0, '#FF1493');
+  new Item('Dog-duck', 'img/dog-duck.jpg', 0, 0, '#ffcb0c');
+  new Item('Dragon', 'img/dragon.jpg', 0, 0, '#2f6a2f');
+  new Item('Pen', 'img/pen.jpg', 0, 0, '#FF1493');
+  new Item('Pet-sweep', 'img/pet-sweep.jpg', 0, 0, '#ffcb0c');
+  new Item('Tauntaun', 'img/tauntaun.jpg', 0, 0, '#FF1493');
+  new Item('Unicorn', 'img/unicorn.jpg', 0, 0, '#2f6a2f');
+  new Item('Usb', 'img/usb.gif', 0, 0, '#272759');
+  new Item('Water-can', 'img/water-can.jpg', 0, 0, '#ffcb0c');
+  new Item('Wine-glass', 'img/wine-glass.jpg', 0, 0, '#FF1493');
 }
 generateItems();
 
